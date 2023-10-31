@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  db:
+    image: bitnami/mariadb:10.5
+    container_name: db-user-api
+    restart: always
+    ports:
+      - 33063:3306
+    environment:
+      - MARIADB_USER=teammy
+      - MARIADB_PASSWORD=superpw
+      - MARIADB_DATABASE=db_ksh
+      - MARIADB_ROOT_PASSWORD=superpw
+    volumes:
+      - ./init_mysql:/docker-entrypoint-startdb.d/:ro
